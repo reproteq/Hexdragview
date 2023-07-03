@@ -1,0 +1,87 @@
+﻿<Window x:Class="Hexdragview.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hexdragview"
+        mc:Ignorable="d"
+        Title="Hexdragview" Height="800" Width="1400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Primera columna -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Content="Search File" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"
+                    Width="120" Height="30" Click="CargarArchivo_Click" />
+
+            <Border Grid.Row="0" Margin="10" BorderThickness="1" BorderBrush="Black"
+                    AllowDrop="True" DragEnter="Archivo_DragEnter" Drop="Archivo_Drop">
+                <TextBlock x:Name="DragDropText" Margin="120,1,1,1" Height="22" FontSize="14" ><Run Text="  "/><Run Text="             DRAG AND DROP HERE YOUR FILE"/></TextBlock>
+            </Border>
+
+            <ListView Grid.Row="1" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding Bytes}" IsSynchronizedWithCurrentItem="True">
+                <ListView.View>
+                    <GridView>
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="FontSize" Value="14" />
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn Width="40" Header="">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RowIndex}" HorizontalAlignment="Center">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Foreground" Value="Red" />
+                                                <Setter Property="FontSize" Value="12" />
+                                                <!-- Tamaño de fuente personalizado -->
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="28" Header="0" DisplayMemberBinding="{Binding D0}" />
+                        <GridViewColumn Width="28" Header="1" DisplayMemberBinding="{Binding D1}" />
+                        <GridViewColumn Width="28" Header="2" DisplayMemberBinding="{Binding D2}" />
+                        <GridViewColumn Width="28" Header="3" DisplayMemberBinding="{Binding D3}" />
+                        <GridViewColumn Width="28" Header="4" DisplayMemberBinding="{Binding D4}" />
+                        <GridViewColumn Width="28" Header="5" DisplayMemberBinding="{Binding D5}" />
+                        <GridViewColumn Width="28" Header="6" DisplayMemberBinding="{Binding D6}" />
+                        <GridViewColumn Width="28" Header="7" DisplayMemberBinding="{Binding D7}" />
+                        <GridViewColumn Width="28" Header="8" DisplayMemberBinding="{Binding D8}" />
+                        <GridViewColumn Width="28" Header="9" DisplayMemberBinding="{Binding D9}" />
+                        <GridViewColumn Width="28" Header="A" DisplayMemberBinding="{Binding DA}" />
+                        <GridViewColumn Width="28" Header="B" DisplayMemberBinding="{Binding DB}" />
+                        <GridViewColumn Width="28" Header="C" DisplayMemberBinding="{Binding DC}" />
+                        <GridViewColumn Width="28" Header="D" DisplayMemberBinding="{Binding DD}" />
+                        <GridViewColumn Width="28" Header="E" DisplayMemberBinding="{Binding DE}" />
+                        <GridViewColumn Width="28" Header="F" DisplayMemberBinding="{Binding DF}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <!-- Segunda columna -->
+        <Grid Grid.Column="1" x:Name="SecondColumnStackPanel"/>
+
+
+        <!-- Tercera columna -->
+        <Grid Grid.Column="2">
+            <!-- Contenido de la tercera columna -->
+        </Grid>
+    </Grid>
+</Window>
